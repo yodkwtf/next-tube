@@ -1,8 +1,48 @@
 # Next.js v13 Cheatsheet
 
+This is a cheatsheet for Next.js v13. It contains my notes for the most important new features and changes in Next.js v13.
+
+## Creating a new Next.js 13 app
+
+```bash
+npx create-next-app@latest my-app
+```
+
+It may ask some questions like the name of the app, the directory, and the type of app you want to create.
+
+Navigate to the directory and run the app.
+
+```bash
+cd my-app
+code .
+```
+
+Start up the development server.
+
+```bash
+npm run dev
+```
+
 ## App Directory
 
 `app/` is a directory that contains global styles, components, and other files that are used throughout the application.
+
+```
+/app
+  /api
+    /hello
+      /route.js
+  /components
+    /Navbar
+      /Navbar.js
+      /Navbar.module.css
+  /layout.js
+  /page.js
+  /page.module.css
+  /about
+    /page.js
+    /page.module.css
+```
 
 #### page.js
 
@@ -10,9 +50,7 @@
 
 #### page.module.css
 
-`page.module.css` is the main page's CSS file, somewhat similar to `index.module.css` in Next.js v12.
-
-Next.js v13 uses CSS Modules by default, so you can use CSS Modules in `page.module.css`.
+Next.js v13 uses CSS Modules by default, so you can use CSS Modules like `page.module.css`.
 
 ## Routing
 
@@ -22,9 +60,29 @@ Now, we create pages inside the `app` directory. We do that by first creating a 
 
 For example, if we want to create a page with the route `/about`, we create a directory named `about` inside the `app` directory and then create a `page.js` file inside it.
 
+```
+/app
+  /about
+    page.js
+  /contact
+    page.js
+  page.js
+```
+
 #### Nested Routes
 
 Also, if we want to create a page with the route `/about/team`, we create a directory named `team` inside the `about` directory and then create a `page.js` file inside it.
+
+```
+/app
+  /about
+    /team
+      page.js
+    page.js
+  /contact
+    page.js
+  page.js
+```
 
 This way we also don't need to create any other components directory for the different components that we want to use in the pages. We can directly create those component in the `/about` directory.
 
@@ -305,7 +363,31 @@ Basically it'll cache the data for 60 seconds and then it'll check and fetch new
 
 > If we don't provide the revalidate option, the data is fetched and cached by Next.js every time we build a new version of our application and hence it'll only update the data when the site is rebuilt.
 
-This is only need if the data is changing very often. If the data is not changing very often, we can just leave it as it is.
+This is only needed if the data is changing very often. If the data is not changing very often, we can just leave it as it is.
+
+If we want to revalidate the page every time the user visits the page, we can set the revalidate option to `0`.
+
+```jsx
+const response = await fetch(
+  'https://api.github.com/users/Yodkwtf-Academy/repos',
+  {
+    next: {
+      revalidate: 0,
+    },
+  }
+);
+```
+
+This can also be done by adding a different option in the `fetch` function.
+
+```jsx
+const response = await fetch(
+  'https://api.github.com/users/Yodkwtf-Academy/repos',
+  {
+    cache: 'no-store',
+  }
+);
+```
 
 ## API Route Handlers
 
