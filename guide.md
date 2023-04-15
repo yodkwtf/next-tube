@@ -251,3 +251,28 @@ const SingleProduct = ({ params }) => {
 ```
 
 If you choose `name` or `title` instead of `id` in the dynamic route, you can access it using `params.name` or `params.title`.
+
+## Suspense Boundaries
+
+Suspense boundaries are used to show a fallback component when the data is being fetched from the server. We can use it to show a loading component or an error component for some specific component.
+
+For example, we have a product page where the name and description show up immediately but the images show up after the data is fetched from the server. We can use suspense boundaries to show a specific placeholder while the images are being fetched.
+
+```jsx
+import { Suspense } from 'react';
+
+export default function SingleProduct({ params }) {
+  return (
+    <>
+      <h2>{product.id}</h2>
+      <Suspense fallback={<div>Loading...</div>}>
+        <img src={product.image} alt={product.name} />
+      </Suspense>
+    </>
+  );
+}
+```
+
+The fallback component will show up until the data is fetched from the server.
+
+The benefit of using this is that even if the images take a long time to load, the name and description will show up immediately instead of the whole page loading.
