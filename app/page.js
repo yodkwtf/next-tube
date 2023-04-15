@@ -7,11 +7,16 @@ const HomePage = () => {
       <ul>
         <li>
           <Link href="/">Home</Link>
+        </li>
+        <li>
           <Link href="/about">About</Link>
-          <Link href="/about/team">About</Link>
+        </li>
+        <li>
+          <Link href="/about/team">Team</Link>
         </li>
       </ul>
     </div>
   );
 };
+
 export default HomePage;

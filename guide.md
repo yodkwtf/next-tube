@@ -45,3 +45,40 @@ Now, we can directly use the `Link` component like this:
   About
 </Link>
 ```
+
+## Layouts
+
+Earlier we used to create a `Layout` component and then wrap the pages with it like this:
+
+```jsx
+import Layout from '../components/Layout';
+
+export default function Home() {
+  return (
+    <Layout>
+      <h1>Hello World</h1>
+    </Layout>
+  );
+}
+```
+
+Now, we have separate layout components for any page we want. These are named as `layout.js` or `layout.jsx`. They basically wrap the whole page as the children of the layout component.
+
+They take `children` as a prop and then render it inside the layout component.
+
+```jsx
+const AboutLayout = ({ children }) => {
+  return (
+    <div>
+      <h1>THIS IS ABOUT PAGE LAYOUT</h1>
+      {children}
+    </div>
+  );
+};
+
+export default AboutLayout;
+```
+
+We can create as many layouts for different pages as we want. Each parent layout will be rendered inside the child layout.
+
+This allows us to have some custom layouts, for example, we can have a modal for the `/about` page and a sidebar for the `/about/team` page.
