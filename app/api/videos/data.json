@@ -1,41 +1,80 @@
 [
   {
     "id": "1",
-    "title": "Test",
-    "description": "Test",
-    "link": "http://www.test.com",
-    "category": "1"
+    "title": "Formspree Crash Course",
+    "description": "In this tutorial, we are going to learn how to handle form submissions without a backend like PHP or nodejs. We will use a service called formspree to handle our form submissions easily with not a single line of server code.",
+    "link": "https://youtu.be/82ieqv-Wf1Q",
+    "category": "HTML"
   },
 
   {
     "id": "2",
-    "title": "Test2",
-    "description": "Test2",
-    "link": "http://www.test2.com",
-    "category": "2"
+    "title": "Input Types in HTML",
+    "description": "In this tutorial, we are going to learn about 10 of the most important and commonly used input types in html forms. These input types come in very handy when we have to take some input or data from a user.",
+    "link": "https://youtu.be/5Nt-e0ZiVMM",
+    "category": "HTML"
   },
 
   {
     "id": "3",
-    "title": "Test3",
-    "description": "Test3",
-    "link": "http://www.test3.com",
-    "category": "3"
+    "title": "Python Cheatsheet Video",
+    "description": "In this video, I want to share my Python Fundamentals Cheatsheet. There are multiple ways to get the cheatsheet. You can either download it as a PDF or get the GitHub Gist for the same.",
+    "link": "https://youtu.be/fPRn0xb7ZmM",
+    "category": "Python"
   },
 
   {
     "id": "4",
-    "title": "Test4",
-    "description": "Test4",
-    "link": "http://www.test4.com",
-    "category": "4"
+    "title": "Create a Custom VSCode Theme from Scratch",
+    "description": "In this tutorial, we will learn how to create a custom vscode theme from scratch. We will see multiple options to create a vscode theme or a vscode extension for that matter. In the end, we will publish our theme so we can use it for all of our projects.",
+    "link": "https://youtu.be/AH81Quvuovg",
+    "category": "VSCode"
   },
 
   {
     "id": "5",
-    "title": "Test5",
-    "description": "Test5",
-    "link": "http://www.test5.com",
-    "category": "5"
+    "title": "Custom Linktree Page",
+    "description": "Learn how to create a custom linktree page using just simple html and css. We will start from scratch and deploy the website to Netlify so that you can get a link to add to your instagram or any other social media bio and share it with your friends and family, all your links and profiles at once place.",
+    "link": "https://youtu.be/SHpXZrF3Puo",
+    "category": "CSS"
+  },
+
+  {
+    "id": "6",
+    "title": "Data Types in Javascript",
+    "description": "In this tutorial, we are will learn about all the different data types in javascript. We will go into detail and learn how and when to use the specific data type.",
+    "link": "https://youtu.be/JfANnZJqiKU",
+    "category": "Javascript"
+  },
+
+  {
+    "id": "7",
+    "title": "Ternary Operators in Javascript",
+    "description": "In this tutorial, we will learn how ternary operators work in javascript. They are used for conditional statements when the logic is very small, basically as the supplement for if-else statements. The knowledge from this video will also you in using ternary operators in reactjs or any other javascript framework since the basic functionality is the same everywhere.",
+    "link": "https://youtu.be/vc8d6VReVJ8",
+    "category": "Javascript"
+  },
+  {
+    "id": "8",
+    "title": "CSS Variables",
+    "description": "In this tutorial, we are will learn all about css variables and how to set up custom properties like custom variables in css. They are super useful and make our workflow very simple, especially when working on bigger projects. I believe css variables is one of the most important and useful feature of modern css.",
+    "link": "https://youtu.be/OH5Zc-ZwoHE",
+    "category": "CSS"
+  },
+
+  {
+    "id": "9",
+    "title": "Deploy with Netlify",
+    "description": "In this netlify tutorial, we will learn how to easily deploy and host our static websites on netlify. Netlify is an awesome tool for web development and you can host any of your frontend websites using netlify. We will look at 2 different ways to do it.",
+    "link": "https://youtu.be/VhbIxSmKhV0",
+    "category": "Netlify"
+  },
+
+  {
+    "id": "10",
+    "title": "Modal in Javascript",
+    "description": "Learn how to create a modal popup using simple javascript and a little bit of CSS. The modal smoothly animates when opening and it is completely responsive. In addition to this, we'll also learn how to close the modal when clicked outside of it.",
+    "link": "https://youtu.be/jRYMypK0gQ8",
+    "category": "Javascript"
   }
 ]
