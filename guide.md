@@ -306,3 +306,41 @@ Basically it'll cache the data for 60 seconds and then it'll check and fetch new
 > If we don't provide the revalidate option, the data is fetched and cached by Next.js every time we build a new version of our application and hence it'll only update the data when the site is rebuilt.
 
 This is only need if the data is changing very often. If the data is not changing very often, we can just leave it as it is.
+
+## API Route Handlers
+
+We can create API routes in NextJS using the `app/api` directory. We can create a file inside the `api` directory and it'll automatically create an API route.
+
+We can also do it in the any page directory but the common practice is to create it in the `api` directory since it prefixes the api route with `/api`.
+
+#### Structure
+
+The structure of the API route is similar to the structure of the page. We create a directory with the route's name inside the `api` directory and then create a file called `route.js` inside the directory.
+
+We name the function whatever HTTP method we want to use.
+
+```js
+// app/api/videos/route.js
+
+import { NextResponse } from 'next/server';
+import videos from './data.json'; // dummy data
+
+export async function GET(request) {
+  return NextResponse.json(videos);
+}
+```
+
+They can be used the same way as any external API.
+
+```jsx
+const fetchVideos = async () => {
+  const res = await fetch('http://localhost:3000/api/videos');
+  const videos = await res.json();
+  return videos;
+};
+
+const Videos = async () => {
+  const videos = await fetchVideos();
+  // ...
+};
+```
