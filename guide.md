@@ -231,3 +231,23 @@ const ErrorPage = () => {
   );
 };
 ```
+
+## Dynamic Routes
+
+Create a directory based on how nested or where you want the dynamic route to be. For example, if you want the dynamic route to be in the `/products/id` page, create a directory named `products` inside the `app` directory and then create another directory within the `products` directory named `[id]`.
+
+#### Get Identifiers from the URL
+
+We can get the identifiers from the URL by passing `params` as the props
+
+```jsx
+const SingleProduct = ({ params }) => {
+  return (
+    <div className="card">
+      <h2>{product.id}</h2>
+    </div>
+  );
+};
+```
+
+If you choose `name` or `title` instead of `id` in the dynamic route, you can access it using `params.name` or `params.title`.
