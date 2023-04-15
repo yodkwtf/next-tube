@@ -276,3 +276,33 @@ export default function SingleProduct({ params }) {
 The fallback component will show up until the data is fetched from the server.
 
 The benefit of using this is that even if the images take a long time to load, the name and description will show up immediately instead of the whole page loading.
+
+## Catching and Revalidating
+
+In the previous versions of NextJS, we had to use the `getStaticProps` and `getServerSideProps` functions to fetch data from the server.
+
+Now, the pages are cached by default in the production build. It is great for performance but it can also cause some issues if the data is changing very often (think about news sites).
+For example, if we have a page that shows the current time, it will show the same time for all the users. If we want to show the current time for each user, we need to revalidate the page.
+
+We can change this by adding some options with the `fetch` functions.
+
+#### Revalidate
+
+It tells NextJS how often it should check for new data. It takes a number in seconds after which it should look for new data.
+
+```jsx
+const response = await fetch(
+  'https://api.github.com/users/Yodkwtf-Academy/repos',
+  {
+    next: {
+      revalidate: 60,
+    },
+  }
+);
+```
+
+Basically it'll cache the data for 60 seconds and then it'll check and fetch new data.
+
+> If we don't provide the revalidate option, the data is fetched and cached by Next.js every time we build a new version of our application and hence it'll only update the data when the site is rebuilt.
+
+This is only need if the data is changing very often. If the data is not changing very often, we can just leave it as it is.

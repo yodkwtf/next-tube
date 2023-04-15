@@ -3,7 +3,12 @@ import { FaStar, FaCodeBranch, FaEye } from 'react-icons/fa';
 
 const fetchRepo = async (name) => {
   const response = await fetch(
-    `https://api.github.com/repos/Yodkwtf-Academy/${name}`
+    `https://api.github.com/repos/Yodkwtf-Academy/${name}`,
+    {
+      next: {
+        revalidate: 60 * 60 * 24,
+      },
+    }
   );
   const repo = await response.json();
   return repo;

@@ -3,7 +3,12 @@ import { FaStar, FaCodeBranch, FaEye } from 'react-icons/fa';
 
 const fetchRepos = async () => {
   const response = await fetch(
-    'https://api.github.com/users/Yodkwtf-Academy/repos'
+    'https://api.github.com/users/Yodkwtf-Academy/repos',
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
 
   // await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 seconds
