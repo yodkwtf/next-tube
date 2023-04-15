@@ -129,3 +129,105 @@ export default function RootLayout({ children }) {
   );
 }
 ```
+
+## Server Components
+
+In NextJS 13, your components are server-rendered by default. This means, if you want to use the useState hook for example and make it interactive, you need to make it a client component otherwise you'll get an error. We can do that simply by adding **use client** to the top of the file.
+
+```jsx
+// app/components/Navbar.js
+
+'use client';
+```
+
+Advantages of RSC:
+
+- Load faster - Don't have to wait for the JavaScript to load
+- Smaller client bundle size
+- SEO friendly
+- Access to resources the client can't access
+- Hide sensitive data from the client
+- More secure against XSS attacks
+- Improved developer experience
+
+Just like with anything else, there are also disadvantages:
+
+- Not as interactive
+- No component state. We can not use the useState hook.
+- No component lifecycle methods. We can not use the useEffect hook.
+
+Here is a chart from the NextJS website that shows when to use a server component vs a client component.
+
+![Server Components vs Client Components](https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/blogs/2147509817/images/1faa437-b711-e40-c84c-251f3b261c_clientvsserver.png)
+
+## Data Fetching
+
+Earlier we used to use the `getStaticProps` and `getServerSideProps` functions to fetch data from the server. We also had to work with `useEffect` and dependency arrays to fetch data from the server, which at times could be a bit confusing.
+
+Now fetching data in RSC (react server components) is much simpler. We can use an async function to make the api call similar to like we did in vanilla javascript.
+
+```jsx
+// app/repos/page.js
+const fetchRepos = async () => {
+  const response = await fetch(
+    'https://api.github.com/users/Yodkwtf-Academy/repos'
+  );
+  const repos = await response.json();
+  return repos;
+};
+```
+
+We can then use the data returned from the function in our async functional component.
+
+```jsx
+// app/repos/page.js
+export default async function Repos() {
+  const repos = await fetchRepos();
+
+  return (
+    <div>
+      <h1>Repos</h1>
+      <ul>
+        {repos.map((repo) => (
+          <li key={repo.id}>{repo.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+> Note: Any console.log statements from the server components will not show up in browser. They will only show up in the terminal.
+
+## Custom Loading/Error Page
+
+If we are fetching data in a server component and it takes some time to load, we can show a custom loading page. We can do that just by creating a `loading.js` or `loading.jsx` file inside the `app` directory. It doesn't require any conditional rendering or anything. It'll automatically show up when the page is loading.
+
+```jsx
+// app/loading.js
+const LoadingPage = () => {
+  return (
+    <div className="loader">
+      <div className="spinner"></div>
+    </div>
+  );
+};
+
+export default LoadingPage;
+```
+
+The component name can be anything but the file name should be `loading.js`only.
+
+We can also do the same for the error page. We can create a `error.js` or `error.jsx` file inside the `app` directory and it'll automatically show up when there is an error.
+
+```jsx
+// app/error.js
+
+const ErrorPage = () => {
+  return (
+    <div>
+      <h1>Something went wrong</h1>
+    </div>
+  );
+};
+```
