@@ -82,3 +82,50 @@ export default AboutLayout;
 We can create as many layouts for different pages as we want. Each parent layout will be rendered inside the child layout.
 
 This allows us to have some custom layouts, for example, we can have a modal for the `/about` page and a sidebar for the `/about/team` page.
+
+## MetaData
+
+Instead of having a `Head` component like before, we can create the meta tags attributes inside the `layout.js` or the `page.js` for any page.
+
+```jsx
+export const metadata = {
+  title: 'Yodkwtf Academy',
+  description: 'Learn to code with Yodkwtf Academy',
+};
+
+export default function Home() {
+  return (
+    <div>
+      <h1>Home page</h1>
+    </div>
+  );
+}
+```
+
+If it's in the page component, it'll only show up for that page. If it's in the layout component, it'll show up for all the pages that use that layout, basically all the nested pages will have those meta tags too.
+
+## Importing Fonts
+
+Instead of importing fonts via css, we can directly import it in the components.
+
+```jsx
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({
+  weight: ['400', '600', '700'],
+  styles: ['italic'],
+  subsets: ['latin-ext'],
+});
+```
+
+This will give us a `poppins` variable which we can use in the `className` attribute of the component.
+
+```jsx
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={poppins.className}>{children}</body>
+    </html>
+  );
+}
+```

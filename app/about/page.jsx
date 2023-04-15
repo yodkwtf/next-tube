@@ -1,3 +1,9 @@
+export const metadata = {
+  title: 'About',
+  description: 'About Yodkwtf Academy',
+  keywords: 'about, yodkwtf, academy',
+};
+
 const AboutPage = () => {
   return (
     <div>
