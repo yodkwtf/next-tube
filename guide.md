@@ -426,3 +426,76 @@ const Videos = async () => {
   // ...
 };
 ```
+
+## Query Params
+
+Get the query params from the URL by following the below steps.
+
+1. Get the URL from the request object
+
+```js
+export async function GET(request) {
+  console.log(request.url);
+  // returns /api/videos/search?query=react
+}
+```
+
+2. Create a new URL object using the URL constructor
+
+```js
+const urlData = new URL(request.url);
+console.log(urlData);
+// returns URL { href: '/api/videos/search?query=react', origin: 'http://localhost:3000', protocol: 'http:', username: '', password: '', host: 'localhost:3000', hostname: 'localhost', port: '3000', pathname: '/api/videos/search', search: '?query=react', searchParams: URLSearchParams { 'query' => 'react' }, hash: '' }
+```
+
+3. Get the search params from the URL object
+
+```js
+const searchParams = urlData.searchParams;
+console.log(searchParams);
+// returns URLSearchParams { 'query' => 'react' }
+```
+
+4. Get the query param from the search params
+
+```js
+const query = searchParams.get('query');
+console.log(query);
+// returns react
+```
+
+5. Use the query param to filter the data
+
+```js
+const filteredVideos = videos.filter((video) => {
+  return video.title.toLowerCase().includes(query.toLowerCase());
+});
+return NextResponse.json(filteredVideos);
+```
+
+#### Getting Body Data from POST Requests
+
+We can get the body data from the POST requests from the `request.json()` function.
+
+```js
+export async function POST(request) {
+  const body = await request.json();
+  console.log(body);
+  // returns { title: 'React Hooks Course', description: 'React Hooks are awesome' }
+}
+```
+
+Create a new video using the body data.
+
+```js
+export async function POST(request) {
+  const body = await request.json();
+  const newVideo = {
+    id: videos.length + 1,
+    title: body.title,
+    description: body.description,
+  };
+  videos.push(newVideo);
+  return NextResponse.json(videos); // return the updated videos
+}
+```
