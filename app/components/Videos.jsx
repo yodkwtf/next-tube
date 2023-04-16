@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-const fetchVideos = async () => {
-  const res = await fetch('http://localhost:3000/api/videos');
-  const videos = await res.json();
-  return videos;
-};
+// const fetchVideos = async () => {
+//   const res = await fetch('http://localhost:3000/api/videos');
+//   const videos = await res.json();
+//   return videos;
+// };
 
-const Videos = async () => {
-  const videos = await fetchVideos();
+const Videos = ({ videos }) => {
+  // const videos = await fetchVideos();
 
   return (
     <div className="courses">

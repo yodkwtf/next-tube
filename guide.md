@@ -499,3 +499,27 @@ export async function POST(request) {
   return NextResponse.json(videos); // return the updated videos
 }
 ```
+
+## Client Components
+
+Client components are components that are only rendered on the client-side. They are not rendered on the server-side. They are used when we want to add any interactive features to the page.
+
+By default, all Next.js 13 components are server components. If we want to use a client component, we need to add the line `use client` at the top of the component.
+
+```jsx
+// app/components/VideoPlayer.js
+
+'use client';
+
+const VideoPlayer = () => {
+  return (
+    <div>
+      <video controls>
+        <source src="https://www.youtube.com/watch?v=6ZnG9vBw8K4" />
+      </video>
+    </div>
+  );
+};
+```
+
+We can only use hooks like `useState` and `useEffect` in the client components.

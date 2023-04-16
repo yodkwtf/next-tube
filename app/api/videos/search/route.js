@@ -3,11 +3,11 @@ import videos from '../data.json';
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const query = searchParams.get('query');
+  const query = searchParams.get('q');
 
   /**
    * request.url -> /api/videos/search?query=react
-   * searchParams -> URLSearchParams { 'query' => 'react' }
+   * searchParams -> URLSearchParams { 'q' => 'react' }
    * query -> react
    */
 
