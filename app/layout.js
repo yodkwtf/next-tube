@@ -9,8 +9,9 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'Yodkwtf Academy',
-  description: 'Learn to code with Yodkwtf Academy',
+  title: 'NextTube - Yodkwtf Academy',
+  description:
+    'A simple project built out to test the latest features of Next.js v13. The app shows a list of my YouTube videos using the API route handlers. It also includes data fetching from server components via the GitHub API.',
 };
 
 export default function RootLayout({ children }) {

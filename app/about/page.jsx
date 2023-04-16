@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'About',
+  title: 'NextTube - About Yodkwtf Academy',
   description: 'About Yodkwtf Academy',
   keywords: 'about, yodkwtf, academy',
 };
